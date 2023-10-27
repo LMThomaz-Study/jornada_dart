@@ -1,15 +1,54 @@
+# Nome do projeto e como iremos importar o arquivo dentro de projeto
+# import package: dart_async/main.dart
 name: dart_async
+# Descrição que se publicado no pub.dev será exibido
 description: A sample command-line application.
-version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+# Versões semanticas no caso do mobile setá será a versão usado no android ou ios
+# 1.2.3+4 a versão
+#   1 -> Versão de realease, nisso dizemos que não mais compatibilidade coma versão anterior
+#   2 -> Novas features implementadas
+#   3 -> Correções de bugs
+#   4 -> Versão de compilação
+version: 1.2.3+4
 
+# Para criação de package
+# -> Site, caso tenha
+#     homepage: https://{site}.com.br
+# -> Página de issues do projeto
+#     issue_tracker: https://github.com/{user}/{repo}/issues 
+# -> Repositório no Github
+#     repository: https://github.com/{user}/{repo}
+
+# Este campo nos permite adicionar restrições tanto ao SDK do Dart
+#   quanto à versão do Flutter, o que significa que quando usamos:
+# Esse projeto só rodar em servões que sejam superiores 3.0.6
 environment:
   sdk: ^3.0.6
 
-# Add regular dependencies here.
+# Em dependencies definimos os packages que nosso projeto depende para funcionar
 dependencies:
-  # path: ^1.8.0
+  # Imformando o chapéuzinho (^) no número da versão, estamos dizendo que podemos pegar as versões de correções de bugs atualizadas
 
+  # Uma dependencia pode ser importada de 4 formas
+  # bloc: ^8.1.0
+  # bloc:
+  #   path: ../fix_bloc // Utilizando por meio de path, assim podendo referênciar um package que esteja dentro da sua máquina
+
+  # bloc: // Dentro do pucspec.yaml do package, deve estar exatamente com igual a este nome de importação
+  #   git: // Importando diretamente do Git
+  #     url: https://github.com/falengel/bloc.git // repositório
+  #     ref: bloc_brick-v0.2.0 // Especificando a Tag do git
+  #     path: packages/bloc // Caminho para o package, em casos de monorepo
+
+  # A 4º forma seria uma forma privada, subindo no seu próprio pub.dev
+
+
+# Dependencia em ambiente de desenvolvimento, ou seja, em compilação não irá para produção
 dev_dependencies:
   lints: ^2.0.0
   test: ^1.21.0
+
+# Depencias transitivas, onde um package depende de outro package
+#   com o dependency_overrides, podemos forçar a uma depencia transitiva a utilizar versões mais atualizadas ou anteriores 
+dependency_overrides:
+  # meta: ^1.3.0 // Dependencia do package bloc (utilizado afim de exemplo)
