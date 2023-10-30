@@ -54,4 +54,9 @@ class Aluno {
   }
 
   factory Aluno.fromJson(String json) => Aluno.fromMap(jsonDecode(json));
+
+  @override
+  String toString() {
+    return 'Aluno: $nome($id)';
+  }
 }
