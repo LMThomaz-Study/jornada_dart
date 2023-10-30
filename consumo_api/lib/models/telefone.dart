@@ -35,14 +35,11 @@ class Telefone {
   // Passo 2
   factory Telefone.fromMap(Map<String, dynamic> map) {
     return Telefone(
-      ddd: map['ddd'],
-      telefone: map['telefone'],
+      ddd: map['ddd'] ?? 0,
+      telefone: map['telefone'] ?? '',
     );
   }
 
   // Passo 1
-  factory Telefone.fromJson(String json) {
-    final jsonMap = jsonDecode(json);
-    return Telefone.fromMap(jsonMap);
-  }
+  factory Telefone.fromJson(String json) => Telefone.fromMap(jsonDecode(json));
 }
