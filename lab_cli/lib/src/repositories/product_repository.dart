@@ -12,7 +12,7 @@ class ProductRepository {
       throw Exception();
     }
 
-    final responseData = jsonDecode(response.body);
+    final responseData = jsonDecode(response.body) as List;
 
     if (responseData.isEmpty) {
       throw Exception('Produto não encontrado');
