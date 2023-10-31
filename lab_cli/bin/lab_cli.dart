@@ -1,42 +1,11 @@
 // import 'package:args/args.dart';
 import 'package:args/command_runner.dart';
+import 'package:lab_cli/src/commands/students/students_command.dart';
 
 // dart .\bin\lab_cli.dart -d --name="Leonardo Thomaz" -t console-full
 
 void main(List<String> arguments) {
-  // final argParser = ArgParser();
-  // argParser.addFlag('data', abbr: 'd');
-  // argParser.addOption('name', abbr: 'n');
-  // argParser.addOption('template', abbr: 't');
-  // final argResult = argParser.parse(arguments);
-
-  // print('${argResult['data']}');
-  // print('${argResult['name']}');
-  // print('${argResult['template']}');
-
   CommandRunner('Lab CLI', '')
-    ..addCommand(ExemploCommand())
+    ..addCommand(StudentsCommand())
     ..run(arguments);
-}
-
-class ExemploCommand extends Command {
-  @override
-  String get description => 'Exemplo de Comando';
-
-  @override
-  String get name => 'exemplo';
-
-  ExemploCommand() {
-    argParser.addOption(
-      'template',
-      abbr: 't',
-      help: 'Template de criação do projeto',
-    );
-  }
-
-  @override
-  void run() {
-    print(argResults?['template']);
-    print('Executar qualquer coisa');
-  }
 }
