@@ -4,15 +4,15 @@ import 'address.dart';
 import 'course.dart';
 
 class Student {
-  int id;
-  String name;
-  int? age;
-  List<String> nameCourses;
-  List<Course> courses;
-  Address address;
+  final int? id;
+  final String name;
+  final int? age;
+  final List<String> nameCourses;
+  final List<Course> courses;
+  final Address address;
 
   Student({
-    required this.id,
+    this.id,
     required this.name,
     this.age,
     required this.nameCourses,
@@ -40,14 +40,14 @@ class Student {
 
   factory Student.fromMap(Map<String, dynamic> map) {
     return Student(
-      id: map['id'],
-      name: map['name'],
+      id: map['id'] ?? 0,
+      name: map['name'] ?? '',
       nameCourses: List<String>.from(map['nameCourses'] ?? []),
       courses: map['courses']
               ?.map<Course>((courseMap) => Course.fromMap(courseMap))
               .toList() ??
           <Course>[],
-      address: Address.fromMap(map['address']),
+      address: Address.fromMap(map['address'] ?? <String, dynamic>{}),
     );
   }
 
