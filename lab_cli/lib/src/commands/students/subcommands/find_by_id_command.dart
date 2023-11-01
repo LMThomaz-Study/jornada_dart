@@ -26,6 +26,7 @@ class FindByIdCommand extends Command {
 
     print('Aguarde, buscando dados...');
     final student = await studentRepository.findById(id);
+
     print('--------------------------------------');
     print('Aluno ${student.name}');
     print('--------------------------------------');
