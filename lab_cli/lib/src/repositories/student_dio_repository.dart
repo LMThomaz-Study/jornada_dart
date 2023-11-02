@@ -37,38 +37,31 @@ class StudentDioRepository {
   }
 
   Future<void> insert(Student student) async {
-    final response = await http.post(
-      Uri.parse('http://localhost:8080/students'),
-      body: student.toJson(),
-      headers: {
-        'content-type': 'application/json',
-      },
-    );
-
-    if (response.statusCode != 200) {
+    try {
+      await Dio().post(
+        'http://localhost:8080/students',
+        data: student.toMap(),
+      );
+    } on DioException {
       throw Exception();
     }
   }
 
   Future<void> update(Student student) async {
-    final response = await http.put(
-      Uri.parse('http://localhost:8080/students/${student.id}'),
-      body: student.toJson(),
-      headers: {
-        'content-type': 'application/json',
-      },
-    );
-
-    if (response.statusCode != 200) {
+    try {
+      await Dio().put(
+        'http://localhost:8080/students/${student.id}',
+        data: student.toMap(),
+      );
+    } on DioException {
       throw Exception();
     }
   }
 
   Future<void> deleteById(int id) async {
-    final response =
-        await http.delete(Uri.parse('http://localhost:8080/students/$id'));
-
-    if (response.statusCode != 200) {
+    try {
+      await Dio().delete('http://localhost:8080/students/$id');
+    } on DioException {
       throw Exception();
     }
   }
