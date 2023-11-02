@@ -8,7 +8,7 @@ class DeleteCommand extends Command {
   final StudentRepository studentRepository;
 
   @override
-  String get description => 'Delete student';
+  String get description => 'Delete student by id';
 
   @override
   String get name => 'delete';
